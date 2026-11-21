@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Twin Lanterns — an original spot-the-difference game. Three night scenes, twenty-one quiet changes, one pair of eyes.">
+<title>Twin Lanterns — Spot the Difference</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">
+      <h1>Twin <span class="lamp">Lanterns</span></h1>
+      <p>Spot the difference — two pictures, a handful of quiet changes. Click a change in either picture.</p>
+    </div>
+    <div class="hud" aria-label="Game status">
+      <div class="chip remaining">
+        <span class="chip-label">Still hiding</span>
+        <span class="chip-value" id="hud-remaining">6</span>
+      </div>
+      <div class="chip">
+        <span class="chip-label">Found</span>
+        <span class="chip-value" id="hud-found">0 of 6</span>
+      </div>
+      <div class="chip timer" id="hud-timer-chip">
+        <span class="chip-label">Time</span>
+        <span class="chip-value" id="hud-timer">0:00</span>
+      </div>
+      <div class="chip">
+        <span class="chip-label">Hints</span>
+        <span class="chip-value" id="hud-hints">3</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="roundbar" aria-label="Rounds">
+    <span id="round-tabs"></span>
+    <span class="round-title" id="round-title">Round 1 — Harbour at Dusk</span>
+  </nav>
+
+  <main class="stage">
+    <div class="panels">
+      <figure class="panel">
+        <canvas id="panel-left" width="560" height="420" aria-label="Picture A, the original scene"></canvas>
+        <figcaption><span>Picture A</span><span>the way it was</span></figcaption>
+      </figure>
+      <figure class="panel">
+        <canvas id="panel-right" width="560" height="420" aria-label="Picture B, the scene with differences"></canvas>
+        <figcaption><span>Picture B</span><span>the way it is now</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="overlay" id="overlay" hidden>
+      <div class="overlay-card">
+        <h2 id="overlay-title">Round complete</h2>
+        <div class="stars" id="overlay-stars"></div>
+        <p id="overlay-text"></p>
+        <p>
+          <button class="btn primary" id="overlay-next" type="button">Next round</button>
+          <button class="btn" id="overlay-replay" type="button">Replay round</button>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="controls">
+    <button class="btn" id="btn-hint" type="button">Hint (H)</button>
+    <button class="btn" id="btn-restart" type="button">Restart round (R)</button>
+    <button class="btn" id="btn-sound" type="button">Sound: on (M)</button>
+    <span class="message" id="message" role="status"></span>
+    <span class="spacer"></span>
+    <span class="keys-help">A miss costs +4 seconds · a hint costs +10 · keys: H hint, R restart, N next</span>
+  </footer>
+
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>

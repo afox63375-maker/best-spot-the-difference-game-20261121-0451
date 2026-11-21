@@ -1,0 +1,311 @@
+/* Twin Lanterns — page styling. Dark harbour-night theme, warm lantern accents. */
+
+:root {
+  --ink: #0d1226;
+  --ink-soft: #171f3d;
+  --paper: #f3e9d2;
+  --amber: #ffb340;
+  --amber-deep: #e07f1f;
+  --teal: #3ec6b8;
+  --rose: #ff6b6b;
+  --line: #2c3763;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(1100px 500px at 50% -120px, #232f5e 0%, rgba(35, 47, 94, 0) 70%),
+    var(--ink);
+  color: var(--paper);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.masthead {
+  width: 1184px;
+  max-width: 96vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 14px 4px 8px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  color: var(--paper);
+}
+
+.brand h1 .lamp {
+  color: var(--amber);
+}
+
+.brand p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #aab4d8;
+}
+
+.hud {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.chip {
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 12px;
+  text-align: center;
+  min-width: 86px;
+}
+
+.chip .chip-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #8d99c4;
+}
+
+.chip .chip-value {
+  display: block;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip.remaining .chip-value {
+  color: var(--amber);
+}
+
+.chip.timer.over-par .chip-value {
+  color: var(--rose);
+}
+
+.roundbar {
+  width: 1184px;
+  max-width: 96vw;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 4px 10px;
+}
+
+.round-tab {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: #8d99c4;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.round-tab.active {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #231303;
+  font-weight: 700;
+}
+
+.round-tab.done {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.round-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--paper);
+  margin-left: 6px;
+}
+
+.stage {
+  position: relative;
+  width: 1184px;
+  max-width: 96vw;
+}
+
+.panels {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.panel {
+  margin: 0;
+}
+
+.panel figcaption {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8d99c4;
+  padding: 6px 2px 0;
+}
+
+.panel canvas {
+  display: block;
+  width: 560px;
+  height: 420px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  cursor: crosshair;
+  background: #101736;
+}
+
+.panel canvas.shake {
+  animation: shake 0.28s linear;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.controls {
+  width: 1184px;
+  max-width: 96vw;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 4px 18px;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--ink-soft);
+  color: var(--paper);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--amber);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.btn.primary {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #231303;
+  font-weight: 700;
+}
+
+.message {
+  font-size: 14px;
+  color: #c6cfe9;
+  min-height: 20px;
+}
+
+.message.good {
+  color: var(--teal);
+}
+
+.message.bad {
+  color: var(--rose);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.keys-help {
+  font-size: 12px;
+  color: #77839f;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 10, 24, 0.62);
+  border-radius: 12px;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.overlay-card {
+  background: var(--ink-soft);
+  border: 1px solid var(--amber);
+  border-radius: 16px;
+  padding: 26px 38px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  max-width: 460px;
+}
+
+.overlay-card h2 {
+  margin: 0 0 4px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  color: var(--amber);
+}
+
+.overlay-card p {
+  margin: 6px 0;
+  color: #c6cfe9;
+  font-size: 15px;
+}
+
+.overlay-card .stars {
+  font-size: 30px;
+  letter-spacing: 6px;
+  color: var(--amber);
+  margin: 8px 0 2px;
+}
+
+.overlay-card .stars .dim {
+  color: #46507a;
+}
+
+/* Narrower windows: stack the pictures and let them shrink to fit. */
+@media (max-width: 900px) {
+  .panels {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .panel canvas {
+    width: min(560px, 92vw);
+    height: auto;
+  }
+
+  .masthead,
+  .roundbar,
+  .controls {
+    flex-wrap: wrap;
+  }
+}
